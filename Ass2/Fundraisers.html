@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Search fundraisers page</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home page</a>
+        <a href="Fundraisers.html">Search fundraisers page</a>
+    </nav>
+    <header>
+        <h1>Search fundraisers page</h1>
+    </header>
+    <form id="search-form" onsubmit="searchFundraisers(event)">
+        <label>
+            Organizer: 
+            <input type="checkbox" name="organizer" value="Leo"> Leo
+            <input type="checkbox" name="organizer" value="David"> David
+            <input type="checkbox" name="organizer" value="Emma"> Emma
+            <input type="checkbox" name="organizer" value="Mike"> Mike
+            <input type="checkbox" name="organizer" value="Edith"> Edith
+            <input type="checkbox" name="organizer" value="Kevin"> Kevin
+            <input type="checkbox" name="organizer" value="Erin"> Erin
+            <input type="checkbox" name="organizer" value="Tom"> Tom
+            <input type="checkbox" name="organizer" value="Ivy"> Ivy
+            <input type="checkbox" name="organizer" value="Lucy"> Lucy
+        </label>
+        <br>
+        <label>
+            City: 
+            <input type="checkbox" name="city" value="Sydney"> Sydney
+            <input type="checkbox" name="city" value="Melbourne"> Melbourne
+            <input type="checkbox" name="city" value="Canberra"> Canberra
+            <input type="checkbox" name="city" value="Darwin"> Darwin
+            <input type="checkbox" name="city" value="Brisbane"> Brisbane
+            <input type="checkbox" name="city" value="Hobart"> Hobart
+            <input type="checkbox" name="city" value="Armidale"> Armidale
+        </label>
+        <br>
+        <label>
+            Category:
+            <input type="checkbox" name="category" value="Health"> Health
+            <input type="checkbox" name="category" value="Environment"> Environment
+            <input type="checkbox" name="category" value="Community Support"> Community Support
+            <input type="checkbox" name="category" value="Education"> Education
+        </label>
+        <br>
+        <button type="submit">Ensure</button>
+        <button type="button" onclick="clearChechboxes()">Clear</button>
+    </form>
+    <div id="error-message" style="color: red; display: none;"></div>
+    <section id="results"></section>
+    <script>
+        function clearChechboxes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            document.getElementById('error-message').textContent = '';
+            document.getElementById('results').innerHTML = '';
+        }
+
+        function searchFundraisers(event) {
+            event.preventDefault();
+            const selectedOrganizers = Array.from(document.querySelectorAll('input[name="organizer"]:checked')).map(cb => cb.value);
+            const selectedCities = Array.from(document.querySelectorAll('input[name="city"]:checked')).map(cb => cb.value);
+            const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+            const resultsDiv = document.getElementById('results');
+            const errorMessage = document.getElementById('error-message');
+            resultsDiv.innerHTML = '';
+            errorMessage.textContent = '';
+
+            // 检查至少选择一个标准
+            if (selectedOrganizers.length === 0 && selectedCities.length === 0 && selectedCategories.length === 0) {
+                errorMessage.textContent = '请至少选择一个标准。';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // 示例数据，您可以根据需要替换为真实数据
+            const fundraisers = [
+                { name: 'Leo', city: 'Sydney', category: 'Health', detailUrl: 'detail_leo.html' },
+                { name: 'Emma', city: 'Melbourne', category: 'Environment', detailUrl: 'detail_emma.html' },
+                { name: 'David', city: 'Brisbane', category: 'Community Support', detailUrl: 'detail_david.html' },
+                { name: 'Mike', city: 'Canberra', category: 'Education', detailUrl: 'detail_mike.html' },
+                // 添加更多募资者
+            ];
+
+            const filtered = fundraisers.filter(fundraiser => {
+                return (selectedOrganizers.length === 0 || selectedOrganizers.includes(fundraiser.name)) &&
+                       (selectedCities.length === 0 || selectedCities.includes(fundraiser.city)) &&
+                       (selectedCategories.length === 0 || selectedCategories.includes(fundraiser.category));
+            });
+
+            if (filtered.length > 0) {
+                filtered.forEach(fundraiser => {
+                    const div = document.createElement('div');
+                    const link = document.createElement('a');
+                    link.href = fundraiser.detailUrl;
+                    link.textContent = `${fundraiser.name} - ${fundraiser.city} - ${fundraiser.category}`;
+                    div.appendChild(link);
+                    resultsDiv.appendChild(div);
+                });
+            } else {
+                resultsDiv.innerHTML = '<strong style="color: red;">没有找到符合条件的募资者。</strong>';
+            }
+        }
+    </script>
+</body>
+</html>
