@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef0d6;
+    color: #333;
+}
+
+nav {
+    background-color: #f0f3b0;
+    padding: 28px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #305f0a;
+    font-size: 22px; 
+    margin-right: 40px;
+}
+
+h1, h2, h3, p{
+    text-align: center;
+  }
+
+h1 {
+    color: #2c3e50;
+    font-size: 56px;
+}
+
+h2 {
+    font-size: 32px;
+    color: #b03987;
+}
+
+h3 {
+    color: #000000;
+}
+
+h4 {
+    color: #15197e;
+}
+
+h5 {
+    color: #ad29b9;
+}
+
+
+header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+section {
+    margin: 20px;
+}
+
+#search-form {
+    font-size: 20px; 
+}
+
+#search-form label {
+    font-size: inherit; 
+}
+
+#search-form input {
+    font-size: inherit; 
+}
+
+
+button {
+    text-align: center;
+    margin-top: 40px;
+    color: #790783;
+}
+
