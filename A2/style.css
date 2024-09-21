@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef0d6;
+    color: #333;
+}
+/*导航*/
+nav {
+    background-color: #f0f3b0;
+    padding: 28px;
+}
+/*导航字体*/
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #305f0a;
+    font-size: 22px; 
+    margin-right: 40px;
+}
+/*字体居中*/
+h1, h2, h3, p{
+    text-align: center;
+  }
+
+h1 {
+    color: #2c3e50;
+    font-size: 56px;
+}
+
+h2 {
+    font-size: 32px;
+    color: #b03987;
+}
+
+h3 {
+    color: #000000;
+}
+
+h4 {
+    color: #15197e;
+}
+
+h5 {
+    color: #ad29b9;
+}
+
+.centered-link {
+    text-align: center; /* 文本居中 */
+    margin: 10px 0;    /* 外边距，可选 */
+}
+
+
+section {
+    margin: 20px;
+}
+
+#search-form {
+    font-size: 20px; /* 根据需要调整字体大小 */
+}
+
+#search-form label {
+    font-size: inherit; /* 确保标签的字体大小继承自父元素 */
+}
+
+#search-form input {
+    font-size: inherit; /* 确保输入框的字体大小继承自父元素 */
+}
+
+#fundraisers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* 调整列间距 */
+}
+
+button {
+    text-align: center;
+    margin-top: 40px;
+    color: #790783;
+}
+
