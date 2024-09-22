@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node index.js",
+    "start": "pm2 start index.js --name crowdfunding-api",
+    "stop": "pm2 stop crowdfunding-api",
+    "restart": "pm2 restart crowdfunding-api",
+    "delete": "pm2 delete crowdfunding-api",
+    "logs": "pm2 logs crowdfunding-api"
   },
   "keywords": [],
   "author": "",

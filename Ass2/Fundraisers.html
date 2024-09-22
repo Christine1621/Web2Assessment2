@@ -79,7 +79,7 @@
 
             // 检查至少选择一个标准
             if (selectedOrganizers.length === 0 && selectedCities.length === 0 && selectedCategories.length === 0) {
-                errorMessage.textContent = '请至少选择一个标准。';
+                errorMessage.textContent = 'Please select at least one criterion.';
                 errorMessage.style.display = 'block';
                 return;
             }
@@ -109,7 +109,7 @@
                     resultsDiv.appendChild(div);
                 });
             } else {
-                resultsDiv.innerHTML = '<strong style="color: red;">没有找到符合条件的募资者。</strong>';
+                resultsDiv.innerHTML = '<strong style="color: red;">No eligible fundraisers were found.</strong>';
             }
         }
     </script>
