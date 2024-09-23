@@ -1,138 +1,275 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #eef0d6;
-    color: #333;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f5ffe8;
+}
+
 /*导航*/
 nav {
-    background-color: #f0f3b0;
-    padding: 28px;
+  background-color: #d6f8a4;
+  padding: 20px 20px;
 }
+
 /*导航字体*/
 nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #305f0a;
-    font-size: 22px; 
-    margin-right: 40px;
-}
-/*字体居中*/
-h1, h2, h3,h4, p{
-    text-align: center;
-  }
-
-h1 {
-    color: #2c3e50;
-    font-size: 56px;
-}
-
-h2 {
-    font-size: 32px;
-    color: #b03987;
-}
-
-h3 {
-    color: #000000;
-}
-
-h4 {
-    color: #15197e;
-}
-
-h5 {
-    color: #ad29b9;
+  margin: 0 30px;
+  text-decoration: none;
+  color: #584343;
+  margin-right: 50px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .centered-link {
-    text-align: center; /* 文本居中 */
-    margin: 10px 0;    /* 外边距，可选 */
+  text-align: center;
+  margin: 10px 0;
+  cursor: pointer;
 }
+.centered-link:hover {
+  background-color: #8e8e8e;
+}
+.centered-link a {
+  color: #333;
+  text-decoration: none;
+}
+
 /*项目详情按钮*/
 a {
-    background-color: #daded5; /* 默认背景颜色 */
-    color: #0d2ee7;              /* 默认文字颜色 */
-    padding: 15px;            /* 内边距 */
-    margin: 10px auto;
-    border-radius: 8px;      /* 圆角 */
-    width: 1500px;             /* 设置宽度 */
-    height: auto;   
-
+  color: #30354f;
+  margin: 10px auto;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 1500px;
+  height: auto;
+  
 }
 
 a:hover {
-    background-color: rgb(236, 195, 195);  /* 悬浮时背景颜色 */
-    color: #ffffff;              /* 悬浮时文字颜色 */
+  
+  text-decoration: underline;
 }
 
 header {
-    text-align: center;
-    margin: 20px 0;
-}
-/*筹集项目背景*/
-.stats {
-    background-color: #fdeff8; /* 方块背景颜色 */
-    padding: 15px;            /* 内边距 */
-    margin: 10px auto;
-    border-radius: 8px;      /* 圆角 */
-    width: 1000px;             /* 设置宽度 */
-    height: auto;             /* 设置高度为自动 */
-}
-
-section {
-    margin: 20px;
+  text-align: center;
+  margin: 20px 0;
 }
 
 #search-form {
-    font-size: 20px; /* 根据需要调整字体大小 */
+  font-size: 16px;
+}
+#search-form .search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#search-form .search-box .input {
+  width: 450px;
+  outline: none;
+  border: 1px solid #eee;
+  background-color: #f9f9f9;
+  padding: 10px;
+  padding-right: 0;
+  font-size: 14px;
+  border-radius: 6px 0 0 6px;
+  margin: 0;
+}
+#search-form .search-box button {
+  border-radius: 0 6px 6px 0;
+  margin: 0;
+}
+
+#search-form>p {
+  font-size: 18px;
+  margin-bottom: 3px;
 }
 
 #search-form label {
-    font-size: inherit; /* 确保标签的字体大小继承自父元素 */
+  padding-right: 15px;
+  display: inline-block;
+  font-size: inherit;
+  display: flex;
+  align-items: center;
 }
 
 #search-form input {
-    font-size: inherit; /* 确保输入框的字体大小继承自父元素 */
+  font-size: inherit;
+  margin: 2px;
 }
 
-#fundraisers {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px; /* 调整列间距 */
+#search-form .searchFilterItem {
+  display: flex;
+  margin-bottom: 10px;
 }
-#fundraisers div {
-    background-color: #dde8dd; /* 方块背景颜色 */
-    border: 1px solid #3f2727; /* 边框 */
-    border-radius: 8px; /* 圆角 */
-    padding: 10px; /* 内边距 */
-    margin: 5px auto; /* 上下外边距，左右自动 */
-    width: 80%; /* 设置宽度，可以根据需要调整 */
-    max-width: 600px; /* 设置最大宽度 */
+
+#results {
+  margin: 0 !important;
+  margin-top: 30px !important;
 }
-#fundraiser-list, #results {
-    list-style-type: none;
-    padding: 0;
+
+#fundraisers, #results {
+  margin: 0 60px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+#fundraisers div, 
+#results div {
+  background-color: #e6ffda;
+  border: 1px solid #dddddd;
+  padding: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+#fundraisers p,
+#results p {
+  font-size: 14px;
+}
+
+#fundraiser-list,
+#results {
+  list-style-type: none;
+  padding: 0;
 }
 
 #donate-button {
-    padding: 15px 30px;  /* 调整按钮大小 */
-    font-size: 16px;     /* 字体大小 */
-    background-color: #99dfa9;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;      /* 使其为块级元素 */
-    margin: 0 auto;     /* 居中对齐 */
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #095739;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
 }
 
 #button-container {
-    text-align: center;  /* 居中内容 */
-    margin-top: 50px;   /* 可选，调整顶部间距 */
+  text-align: center;
+  margin-top: 50px;
 }
 
 button {
-    text-align: center;
-    margin-top: 40px;
-    color: #790783;
+  text-align: center;
+  margin-top: 40px;
+  color: #000;
+  padding: 10px 20px;
+  border: 1px solid #eee;
+  cursor: pointer;
 }
 
+button:hover {
+  text-align: center;
+  margin-top: 40px;
+  padding: 10px 20px;
+  border: 1px solid #eee;
+  background-color: #eaeaea;
+}
+
+.title {
+  text-align: center;
+  margin: 30px 0 0px;
+  font-size: 50px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-4 {
+  flex: 8;
+  margin-left: 30px;
+}
+
+.flex-8 {
+  flex: 8;
+}
+
+.content {
+  margin: 40px 60px;
+}
+
+h1 {
+  color: #020078;
+}
+
+h2 {
+  margin-bottom: 9px;
+  font-size: 20px;
+}
+
+p {
+  line-height: 1.25;
+  color: #333;
+}
+
+b {
+  font-weight: 500;
+  color: #6966ff;
+}
+
+.content-list {
+  max-height: 350px;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.content-list p {
+  margin-bottom: 20px;
+}
+
+.flex-4 div {
+  margin-bottom: 30px;
+}
+.flex-4 div:last-child {
+  margin-bottom: 0;
+}
+
+.card {
+  padding: 12px;
+  border: 1px solid #dddddd;
+}
+
+.card h2 {
+  background-color: #efefef;
+  color: #444;
+  margin: -12px;
+  padding: 10px;
+}
+
+.card div {
+  margin-top: 20px;
+  height: 100%;
+  overflow: auto;
+}
+
+footer {
+  padding: 20px 60px;
+  background-color: #efefef;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+dialog {
+  width: 300px;
+  margin: auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}

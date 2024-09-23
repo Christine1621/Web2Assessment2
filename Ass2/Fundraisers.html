@@ -2,117 +2,208 @@
 <html lang="zh">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
-    <title>Search fundraisers page</title>
+  <link rel="stylesheet" href="style.css">
+  <title>Search fundraisers page</title>
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">Home page</a>
-        <a href="Fundraisers.html">Search fundraisers page</a>
-    </nav>
-    <header>
-        <h1>Search fundraisers page</h1>
-    </header>
-    <form id="search-form" onsubmit="searchFundraisers(event)">
-        <label>
-            Organizer:
-            <input type="checkbox" name="organizer" value="Leo"> Leo
-            <input type="checkbox" name="organizer" value="David"> David
-            <input type="checkbox" name="organizer" value="Emma"> Emma
-            <input type="checkbox" name="organizer" value="Mike"> Mike
-            <input type="checkbox" name="organizer" value="Edith"> Edith
-            <input type="checkbox" name="organizer" value="Kevin"> Kevin
-            <input type="checkbox" name="organizer" value="Erin"> Erin
-            <input type="checkbox" name="organizer" value="Tom"> Tom
-            <input type="checkbox" name="organizer" value="Ivy"> Ivy
-            <input type="checkbox" name="organizer" value="Lucy"> Lucy
+  <nav>
+    <a href="index.html">Home page</a>
+    <a href="Fundraisers.html">Search fundraisers page</a>
+  </nav>
+  <header>
+    <h1 class="title">Search fundraisers page</h1>
+  </header>
+  <div class="content">
+  </div>
+  <div class="content">
+    <form id="search-form">
+      <div class="search-box">
+        <input type="text" id="searchInput" class="input" placeholder="Seatch for fundraiser name or city." />
+        <button onclick="searchClickHandler(event)">Seach</button>
+      </div>
+      <p>Organizer:</p>
+      <div class="searchFilterItem">
+        <label for="leo">
+          <input type="checkbox" id="leo" name="organizer" value="Leo"> Leo
         </label>
-        <br>
-        <label>
-            City:
-            <input type="checkbox" name="city" value="Sydney"> Sydney
-            <input type="checkbox" name="city" value="Melbourne"> Melbourne
-            <input type="checkbox" name="city" value="Canberra"> Canberra
-            <input type="checkbox" name="city" value="Darwin"> Darwin
-            <input type="checkbox" name="city" value="Brisbane"> Brisbane
-            <input type="checkbox" name="city" value="Hobart"> Hobart
-            <input type="checkbox" name="city" value="Armidale"> Armidale
+        <label for="david">
+          <input type="checkbox" id="david" name="organizer" value="David"> David
         </label>
-        <br>
-        <label>
-            Category:
-            <input type="checkbox" name="category" value="Health"> Health
-            <input type="checkbox" name="category" value="Environment"> Environment
-            <input type="checkbox" name="category" value="Community Support"> Community Support
-            <input type="checkbox" name="category" value="Education"> Education
+        <label for="emma">
+          <input type="checkbox" id="emma" name="organizer" value="Emma"> Emma
         </label>
-        <br>
-        <button type="submit">Ensure</button>
-        <button type="button" onclick="clearChechboxes()">Clear</button>
+        <label for="mike">
+          <input type="checkbox" id="mike" name="organizer" value="Mike"> Mike
+        </label>
+        <label for="edith">
+          <input type="checkbox" id="edith" name="organizer" value="Edith"> Edith
+        </label>
+        <label for="kevin">
+          <input type="checkbox" id="kevin" name="organizer" value="Kevin"> Kevin
+        </label>
+        <label for="erin">
+          <input type="checkbox" id="erin" name="organizer" value="Erin"> Erin
+        </label>
+        <label for="tom">
+          <input type="checkbox" id="tom" name="organizer" value="Tom"> Tom
+        </label>
+        <label for="ivy">
+          <input type="checkbox" id="ivy" name="organizer" value="Ivy"> Ivy
+        </label>
+        <label for="lucy">
+          <input type="checkbox" id="lucy" name="organizer" value="Lucy"> Lucy
+        </label>
+      </div>
+
+      <p>City:</p>
+      <div class="searchFilterItem">
+        <label for="sydney">
+          <input type="checkbox" id="sydney" name="city" value="Sydney"> Sydney
+        </label>
+        <label for="melbourne">
+          <input type="checkbox" id="melbourne" name="city" value="Melbourne"> Melbourne
+        </label>
+        <label for="canberra">
+          <input type="checkbox" id="canberra" name="city" value="Canberra"> Canberra
+        </label>
+        <label for="darwin">
+          <input type="checkbox" id="darwin" name="city" value="Darwin"> Darwin
+        </label>
+        <label for="brisbane">
+          <input type="checkbox" id="brisbane" name="city" value="Brisbane"> Brisbane
+        </label>
+        <label for="hobart">
+          <input type="checkbox" id="hobart" name="city" value="Hobart"> Hobart
+        </label>
+        <label for="armidale">
+          <input type="checkbox" id="armidale" name="city" value="Armidale"> Armidale
+        </label>
+      </div>
+
+      <p>Category:</p>
+      <div class="searchFilterItem">
+        <label for="health">
+          <input type="checkbox" id="health" name="category" value="1"> Health
+        </label>
+        <label for="environment">
+          <input type="checkbox" id="environment" name="category" value="2"> Environment
+        </label>
+        <label for="community-support">
+          <input type="checkbox" id="community-support" name="category" value="3"> Community Support
+        </label>
+        <label for="education">
+          <input type="checkbox" id="education" name="category" value="4"> Education
+        </label>
+      </div>
+      <button type="submit" onclick="searchFundraisers(event)">Search</button>
+      <button type="button" onclick="clearCheckboxes()">Clear</button>
     </form>
+
     <div id="error-message" style="color: red; display: none;"></div>
     <section id="results"></section>
+  </div>
 
-    <script>
-        function clearChechboxes() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
-            });
-            document.getElementById('error-message').textContent = '';
-            document.getElementById('results').innerHTML = '';
-        }
+  <script>
+    function clearCheckboxes() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      document.getElementById('error-message').textContent = '';
+      document.getElementById('results').innerHTML = '';
+    }
 
-        function searchFundraisers(event) {
-            event.preventDefault();
-            const selectedOrganizers = Array.from(document.querySelectorAll('input[name="organizer"]:checked')).map(cb => cb.value);
-            const selectedCities = Array.from(document.querySelectorAll('input[name="city"]:checked')).map(cb => cb.value);
-            const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
-            const resultsDiv = document.getElementById('results');
-            const errorMessage = document.getElementById('error-message');
-            resultsDiv.innerHTML = '';
-            errorMessage.textContent = '';
+    async function searchFundraisers(event) {
+      event.preventDefault();
+      const selectedOrganizers = Array.from(document.querySelectorAll('input[name="organizer"]:checked')).map(cb => cb.value);
+      const selectedCities = Array.from(document.querySelectorAll('input[name="city"]:checked')).map(cb => cb.value);
+      const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+      const resultsDiv = document.getElementById('results');
+      const errorMessage = document.getElementById('error-message');
+      resultsDiv.innerHTML = '';
+      errorMessage.textContent = '';
 
-            // 检查至少选择一个标准
-            if (selectedOrganizers.length === 0 && selectedCities.length === 0 && selectedCategories.length === 0) {
-                errorMessage.textContent = 'Please select at least one criterion.';
-                errorMessage.style.display = 'block';
-                return;
-            }
+      
+      if (selectedOrganizers.length === 0 && selectedCities.length === 0 && selectedCategories.length === 0) {
+        errorMessage.textContent = 'Please select at least one criterion.';
+        errorMessage.style.display = 'block';
+        return;
+      }
 
-            // 示例数据，您可以根据需要替换为真实数据
-            const fundraisers = [
-                { name: 'Leo', city: 'Sydney', category: 'Health', detailUrl: 'detail_leo.html' },
-                { name: 'Emma', city: 'Melbourne', category: 'Environment', detailUrl: 'detail_emma.html' },
-                { name: 'David', city: 'Brisbane', category: 'Community Support', detailUrl: 'detail_david.html' },
-                { name: 'Mike', city: 'Canberra', category: 'Education', detailUrl: 'detail_mike.html' },
-                // 添加更多募资者
-            ];
+      const fundraisers = await getList();
+      const filtered = fundraisers.filter(fundraiser => {
+        return (selectedOrganizers.length === 0 || selectedOrganizers.includes(fundraiser.ORGANIZER)) &&
+          (selectedCities.length === 0 || selectedCities.includes(fundraiser.CITY)) &&
+          (selectedCategories.length === 0 || selectedCategories.includes(String(fundraiser.CATEGORY_ID)));
+      });
 
-            const filtered = fundraisers.filter(fundraiser => {
-                return (selectedOrganizers.length === 0 || selectedOrganizers.includes(fundraiser.name)) &&
-                    (selectedCities.length === 0 || selectedCities.includes(fundraiser.city)) &&
-                    (selectedCategories.length === 0 || selectedCategories.includes(fundraiser.category));
-            });
 
-            if (filtered.length > 0) {
-                filtered.forEach(fundraiser => {
-                    const div = document.createElement('div');
-                    const link = document.createElement('a');
-                    link.href = fundraiser.detailUrl;
-                    link.textContent = `${fundraiser.name} - ${fundraiser.city} - ${fundraiser.category}`;
-                    div.appendChild(link);
-                    resultsDiv.appendChild(div);
-                });
-            } else {
-                resultsDiv.innerHTML = '<strong style="color: red;">No eligible fundraisers were found.</strong>';
-            }
-        }
-    </script>
+      if (filtered.length > 0) {
+        filtered.forEach(fundraiser => {
+          const element = genSearchResultElementList([fundraiser]);
+          document.getElementById('results').innerHTML = element;
+        });
+      } else {
+        resultsDiv.innerHTML = '<strong style="color: red;">No eligible fundraisers were found.</strong>';
+      }
+    }
+
+    function getList() {
+      return new Promise((resolve, reject) => {
+        fetch('http://localhost:3000/api/fundraisers')
+          .then(response => response.json())
+          .then(fundraisers => {
+            resolve(fundraisers)
+          })
+      })
+    }
+
+    const searchInput = document.getElementById("searchInput");
+    async function searchClickHandler(e) {
+      event.preventDefault();
+      const value = searchInput.value.toLocaleLowerCase();
+      if (!value.trim()) {
+        return;
+      }
+
+      const fundraisers = await getList();
+      const filterData = fundraisers.filter(item => {
+        return Object.values(item).some(e => {
+          return String(e).toLocaleLowerCase().includes(value);
+        });
+      });
+      const element = genSearchResultElementList(filterData);
+      document.getElementById('results').innerHTML = element;
+    }
+
+    function genSearchResultElementList(data) {
+      if (!Array.isArray(data)) {
+        return null;
+      }
+
+      return data.map(fundraiser => {
+        return `
+          <div>
+            <h3 style="margin-bottom: 5px;">${fundraiser.CAPTION}</h3>
+            <p>Fundraiser ID: ${fundraiser.FUNDRAISER_ID}</p>
+            <p>Organizer: ${fundraiser.ORGANIZER}</p>
+            <p>Target Funding: $${fundraiser.TARGET_FUNDING}</p>
+            <p>Current Funding: $${fundraiser.CURRENT_FUNDING}</p>
+            <p>City: ${fundraiser.CITY}</p>
+            <p>Active: ${fundraiser.ACTIVE ? 'Yes' : 'No'}</p>
+            <p>Category: ${fundraiser.CATEGORY_ID}</p>
+            <div class="centered-link">
+                <a href="Leo.html?id=${fundraiser.FUNDRAISER_ID}">View Details</a>
+            </div>
+          </div>
+        `
+      }).join("");
+    }
+  </script>
 </body>
 
 </html>
