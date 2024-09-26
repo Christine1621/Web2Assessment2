@@ -17,14 +17,16 @@
   <header>
     <h1 class="title">Search fundraisers page</h1>
   </header>
+
   <div class="content">
   </div>
   <div class="content">
     <form id="search-form">
       <div class="search-box">
-        <input type="text" id="searchInput" class="input" placeholder="Seatch for fundraiser name or city." />
-        <button onclick="searchClickHandler(event)">Seach</button>
+        <input type="text" id="searchInput" class="input" placeholder="Search for fundraiser name or city." />
+        <button onclick="searchClickHandler(event)">Search</button>
       </div>
+
       <p>Organizer:</p>
       <div class="searchFilterItem">
         <label for="leo">
@@ -99,6 +101,7 @@
           <input type="checkbox" id="education" name="category" value="4"> Education
         </label>
       </div>
+
       <button type="submit" onclick="searchFundraisers(event)">Search</button>
       <button type="button" onclick="clearCheckboxes()">Clear</button>
     </form>
@@ -163,6 +166,7 @@
     }
 
     const searchInput = document.getElementById("searchInput");
+    
     async function searchClickHandler(e) {
       event.preventDefault();
       const value = searchInput.value.toLocaleLowerCase();
