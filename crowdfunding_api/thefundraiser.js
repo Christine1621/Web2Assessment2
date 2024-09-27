@@ -3,14 +3,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('./crowdfunding_db'); 
 
-const app = express();
+const server = express();
 
 //const PORT = 3000;
 
-app.use(cors());
-app.use(bodyParser.json());
+server.use(cors());
+server.use(bodyParser.json());
 
-app.get('/api/fundraisers', (req, res) => {
+server.get('/api/fundraisers', (req, res) => {
     const sql = 'SELECT * FROM FUNDRAISER';
     db.query(sql, (err, results) => {
         if (err) {
@@ -20,7 +20,7 @@ app.get('/api/fundraisers', (req, res) => {
     });
 });
 
-app.get('/api/categories', (req, res) => {
+server.get('/api/categories', (req, res) => {
     const sql = 'SELECT * FROM CATEGORY';
     db.query(sql, (err, results) => {
         if (err) {
@@ -30,7 +30,7 @@ app.get('/api/categories', (req, res) => {
     });
 });
 
-app.get('/api/fundraisers/category/:categoryId', (req, res) => {
+server.get('/api/fundraisers/category/:categoryId', (req, res) => {
     const sql = `
         SELECT f.*, c.NAME as CATEGORY_NAME 
         FROM FUNDRAISER f 
@@ -44,7 +44,7 @@ app.get('/api/fundraisers/category/:categoryId', (req, res) => {
     });
 });
 
-app.get('/api/fundraiser/:id', (req, res) => {
+server.get('/api/fundraiser/:id', (req, res) => {
     const sql = 'SELECT * FROM FUNDRAISER WHERE FUNDRAISER_ID = ?';
     db.query(sql, [req.params.id], (err, results) => {
         if (err) {
@@ -57,6 +57,6 @@ app.get('/api/fundraiser/:id', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`The server is running, port: ${PORT}`);
 });
